@@ -15,6 +15,7 @@ class TimeEntry {
     required this.notes,
   });
 
+  // Convert TimeEntry to JSON
   Map<String,dynamic> toJson(){
     return{
       'id' : id,
@@ -24,5 +25,17 @@ class TimeEntry {
       'date' : date.toIso8601String(),
       'notes' : notes,
     };
+  }
+
+  // Create TimeEntry from JSON
+  factory TimeEntry.fromJson(Map<String, dynamic>json){
+    return TimeEntry(
+        id: json['name'],
+        projectId: json['projectId'],
+        taskId: json['taskId'],
+        totalTime: json['totalTime'],
+        date: DateTime.parse(json['date']),
+        notes: json['notes'],
+    );
   }
 }
